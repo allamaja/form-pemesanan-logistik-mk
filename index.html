@@ -10,69 +10,65 @@
     <div class="container">
       <h2>Form Pemesanan Logistik Metode Khairunnas</h2>
 
-      <!-- Form utama -->
-      <form id="formPemesanan">
-        <!-- Identitas -->
-        <label>Nama Pemesan:</label>
-        <input type="text" id="namaPemesan" placeholder="Masukkan nama pemesan" required />
+      <!-- Identitas -->
+      <label>Nama Pemesan:</label>
+      <input type="text" id="namaPemesan" placeholder="Masukkan nama pemesan" />
 
-        <label>No. WhatsApp:</label>
-        <input type="number" id="noWa" placeholder="081234567890" />
+      <label>No. WhatsApp:</label>
+      <input type="number" id="noWa" placeholder="081234567890" />
 
-        <label>Alamat Tujuan:</label>
-        <textarea id="alamat" rows="2" placeholder="Masukkan alamat lengkap"></textarea>
+      <label>Alamat Tujuan:</label>
+      <textarea id="alamat" rows="2" placeholder="Masukkan alamat lengkap"></textarea>
 
-        <label>Cabang:</label>
-        <select id="cabang">
-          <option value="">-- Pilih Cabang --</option>
-          <option>Surabaya</option>
-          <option>Malang</option>
-          <option>Gresik</option>
-          <option>Sidoarjo</option>
-          <option>Sampang</option>
-          <option>Bangkalan</option>
-          <option>Tuban</option>
-          <option>Bojonegoro</option>
-          <option>Madiun</option>
-          <option>Semarang</option>
-        </select>
+      <label>Cabang:</label>
+      <select id="cabang">
+        <option value="">-- Pilih Cabang --</option>
+        <option>Surabaya</option>
+        <option>Malang</option>
+        <option>Gresik</option>
+        <option>Sidoarjo</option>
+        <option>Sampang</option>
+        <option>Bangkalan</option>
+        <option>Tuban</option>
+        <option>Bojonegoro</option>
+        <option>Madiun</option>
+        <option>Semarang</option>
+      </select>
 
-        <label>Divisi:</label>
-        <select id="divisi">
-          <option value="">-- Pilih Divisi --</option>
-          <option>HJ</option>
-          <option>TK</option>
-          <option>SD</option>
-          <option>Sekolah di Masjid</option>
-          <option>SMP</option>
-          <option>SMA</option>
-          <option>NBS</option>
-        </select>
+      <label>Divisi:</label>
+      <select id="divisi">
+        <option value="">-- Pilih Divisi --</option>
+        <option>HJ</option>
+        <option>TK</option>
+        <option>SD</option>
+        <option>Sekolah di Masjid</option>
+        <option>SMP</option>
+        <option>SMA</option>
+        <option>NBS</option>
+      </select>
 
-        <label>Metode Pengiriman:</label>
-        <div class="radio-group">
-          <label><input type="radio" name="pengiriman" value="Ambil Sendiri" /> Ambil Sendiri</label>
-          <label><input type="radio" name="pengiriman" value="Kirim ke Tujuan" /> Kirim ke Tujuan</label>
+      <label>Metode Pengiriman:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="pengiriman" value="Ambil Sendiri" /> Ambil Sendiri</label>
+        <label><input type="radio" name="pengiriman" value="Kirim ke Tujuan" /> Kirim ke Tujuan</label>
+      </div>
+
+      <hr />
+      <h3>Daftar Barang</h3>
+
+      <div id="barang-container">
+        <div class="barang-row">
+          <select class="barang">
+            <option value="">-- Pilih Barang --</option>
+          </select>
+          <input type="number" class="jumlah" placeholder="Jumlah" />
+          <input type="text" class="keterangan" placeholder="Keterangan (opsional)" />
+          <button type="button" class="hapus">🗑</button>
         </div>
+      </div>
 
-        <hr />
-        <h3>Daftar Barang</h3>
-
-        <div id="barang-container">
-          <div class="barang-row">
-            <select id="barang">
-              <option value="">-- Pilih Barang --</option>
-            </select>
-            <input type="number" id="jumlah" placeholder="Jumlah" />
-            <input type="text" id="keterangan" placeholder="Keterangan (opsional)" />
-          </div>
-        </div>
-
-        <div class="button-group">
-          <button type="submit" id="kirim">Kirim Pesanan</button>
-        </div>
-      </form>
-
+      <button id="tambah">+ Tambah Barang</button>
+      <button id="kirim">Kirim Pesanan</button>
       <p id="status"></p>
     </div>
 
