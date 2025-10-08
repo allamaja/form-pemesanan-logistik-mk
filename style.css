@@ -1,0 +1,80 @@
+      /* ======== CSS ======== */
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8fafc;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        max-width: 720px;
+        margin: auto;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+      h2 {
+        text-align: center;
+        color: #0f766e;
+        margin-bottom: 24px;
+      }
+      label {
+        display: block;
+        font-weight: 600;
+        margin-top: 10px;
+        margin-bottom: 4px;
+      }
+      input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #d1d5db;
+        margin-bottom: 12px;
+      }
+      .barang-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .barang-row select, 
+      .barang-row input {
+        flex: 1;
+      }
+      .hapus {
+        background: #ef4444;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 10px;
+        cursor: pointer;
+      }
+      .hapus:hover {
+        background: #dc2626;
+      }
+      button {
+        border: none;
+        background-color: #0d7b94;
+        color: white;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      button:hover {
+        background-color: #0f5c76;
+      }
+       .radio-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .radio-group label {
+        font-weight: normal;
+      }
+      #status {
+        text-align: center;
+        margin-top: 12px;
+        color: #0d9488;
+        font-weight: 500;
+      }
