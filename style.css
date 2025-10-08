@@ -180,7 +180,7 @@ button {
 }
 
 .logo {
-  width: 500px; /* ukuran logo bisa disesuaikan */
+  width: 250px; /* ukuran logo bisa disesuaikan */
   height: auto;
   border-radius: 8px; /* opsional, buat sudut membulat */
 }
