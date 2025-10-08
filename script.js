@@ -1,25 +1,30 @@
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbztC4hZdlKKBoY9l5JKGxIvho1ca4FIMzaj0GTFIEs_IOosGOEOY9TYskysRQJZ1o8r/exec';
 
-// Ambil data barang dari backend
+let barangList = []; // simpan data barang global
+
+// Ambil data barang dari backend (sekali saja)
 async function loadBarangList() {
   try {
     const response = await fetch(`${SCRIPT_URL}?action=getBarangList`);
-    const barangList = await response.json();
-
-    // Isi semua dropdown barang
-    document.querySelectorAll('.barang').forEach(select => {
-      select.innerHTML = '<option value="">-- Pilih Barang --</option>';
-      barangList.forEach(barang => {
-        const option = document.createElement('option');
-        option.value = barang;
-        option.textContent = barang;
-        select.appendChild(option);
-      });
-    });
+    barangList = await response.json();
+    isiDropdownSemuaSelect();
   } catch (err) {
     console.error('Gagal memuat daftar barang:', err);
     alert('⚠️ Gagal memuat daftar barang. Coba refresh halaman.');
   }
+}
+
+// Isi dropdown barang
+function isiDropdownSemuaSelect() {
+  document.querySelectorAll('.barang').forEach(select => {
+    select.innerHTML = '<option value="">-- Pilih Barang --</option>';
+    barangList.forEach(barang => {
+      const option = document.createElement('option');
+      option.value = barang;
+      option.textContent = barang;
+      select.appendChild(option);
+    });
+  });
 }
 
 // Tambah baris barang baru
@@ -29,8 +34,18 @@ function tambahBaris() {
   const clone = baris.cloneNode(true);
   clone.querySelector('.jumlah').value = '';
   clone.querySelector('.keterangan').value = '';
+
+  // isi dropdown dari data yang sudah disimpan
+  const select = clone.querySelector('.barang');
+  select.innerHTML = '<option value="">-- Pilih Barang --</option>';
+  barangList.forEach(barang => {
+    const option = document.createElement('option');
+    option.value = barang;
+    option.textContent = barang;
+    select.appendChild(option);
+  });
+
   container.appendChild(clone);
-  loadBarangList(); // isi dropdown baru
 }
 
 // Hapus baris barang
@@ -79,7 +94,8 @@ async function kirimPesanan() {
     });
     document.getElementById('status').textContent = "✅ Pesanan berhasil dikirim!";
     document.getElementById('barang-container').innerHTML = ''; // reset form
-    tambahBaris();
+    tambahBaris(); // tambah baris baru kosong
+    isiDropdownSemuaSelect(); // isi dropdown di baris baru
   } catch (err) {
     console.error(err);
     document.getElementById('status').textContent = "❌ Gagal mengirim data!";
