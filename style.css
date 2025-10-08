@@ -83,25 +83,14 @@ hr {
 /* ===== DAFTAR BARANG ===== */
 .barang-row {
   display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.barang-row select,
-.barang-row input {
-  flex: 1;
-}
-.barang-item {
-  display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
   flex-wrap: wrap; /* agar bisa turun baris dengan rapi */
 }
 
-.barang-item select,
-.barang-item input {
+.barang-row select,
+.barang-row input {
   flex: 1;
   min-width: 100px;
   padding: 6px;
@@ -109,7 +98,7 @@ hr {
   border-radius: 6px;
 }
 
-.barang-item button {
+.barang-row button {
   background-color: #EF4444;
   color: white;
   border: none;
@@ -192,14 +181,14 @@ button {
     flex-direction: column;
     gap: 8px; /* jarak vertikal antar tombol */
   }
-  .barang-item {
+  .barang-row {
     flex-direction: column; /* susun vertikal */
     align-items: stretch;
   }
 
-  .barang-item select,
-  .barang-item input,
-  .barang-item button {
+  .barang-row select,
+  .barang-row input,
+  .barang-row button {
     width: 100%; /* biar lebar penuh */
   }
 
