@@ -65,13 +65,23 @@
       }
        .radio-group {
         display: flex;
-        gap: 10px;
-        margin-bottom: 15px;
+        gap: 20px;
+        margin-top: 4px;
       }
 
       .radio-group label {
-        font-weight: normal;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
       }
+
+      .radio-group input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        accent-color: #007bff; /* warna biru modern */
+      }
+
       #status {
         text-align: center;
         margin-top: 12px;
