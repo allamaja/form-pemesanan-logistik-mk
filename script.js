@@ -27,15 +27,34 @@ function isiDropdownSemuaSelect() {
   });
 }
 
-// Tambah baris barang baru
 function tambahBaris() {
   const container = document.getElementById('barang-container');
   const baris = container.querySelector('.barang-row');
-  const clone = baris.cloneNode(true);
+
+  let clone;
+
+  if (baris) {
+    // Jika masih ada contoh baris, clone dari situ
+    clone = baris.cloneNode(true);
+  } else {
+    // Kalau sudah terhapus (misal setelah submit), buat baru manual
+    clone = document.createElement('div');
+    clone.classList.add('barang-row');
+    clone.innerHTML = `
+      <select class="barang">
+        <option value="">-- Pilih Barang --</option>
+      </select>
+      <input type="number" class="jumlah" placeholder="Jumlah" />
+      <input type="text" class="keterangan" placeholder="Keterangan (opsional)" />
+      <button type="button" class="hapus">🗑</button>
+    `;
+  }
+
+  // kosongkan field input
   clone.querySelector('.jumlah').value = '';
   clone.querySelector('.keterangan').value = '';
 
-  // isi dropdown dari data yang sudah disimpan
+  // isi dropdown dari daftar global
   const select = clone.querySelector('.barang');
   select.innerHTML = '<option value="">-- Pilih Barang --</option>';
   barangList.forEach(barang => {
@@ -47,6 +66,7 @@ function tambahBaris() {
 
   container.appendChild(clone);
 }
+
 
 // Hapus baris barang
 document.addEventListener('click', e => {
