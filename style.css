@@ -174,12 +174,26 @@ button {
   color: #555;
 }
 
+.logo-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.logo {
+  width: 100px; /* ukuran logo bisa disesuaikan */
+  height: auto;
+  border-radius: 8px; /* opsional, buat sudut membulat */
+}
+
 /* Responsive di HP */
 @media (max-width: 600px) {
   .form-buttons {
     display: flex;
     flex-direction: column;
     gap: 8px; /* jarak vertikal antar tombol */
+  }
+  .logo {
+    width: 80px;
   }
   .barang-row {
     flex-direction: column; /* susun vertikal */
