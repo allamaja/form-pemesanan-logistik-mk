@@ -1,122 +1,77 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Pemesanan Logistik</title>
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      background-color: #f9fafb;
-      margin: 0;
-      padding: 20px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Pemesanan Logistik Metode Khairunnas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Form Pemesanan Logistik Metode Khairunnas</h2>
 
-    .container {
-      max-width: 500px;
-      margin: auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 20px;
-    }
+      <!-- Identitas -->
+      <label>Nama Pemesan:</label>
+      <input type="text" id="namaPemesan" placeholder="Masukkan nama pemesan" />
 
-    h2 {
-      text-align: center;
-      color: #0284c7;
-    }
+      <label>No. WhatsApp:</label>
+      <input type="number" id="noWa" placeholder="081234567890" />
 
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: 500;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 4px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-
-    .radio-group {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-
-    button {
-      width: 100%;
-      background-color: #0284c7;
-      color: white;
-      border: none;
-      padding: 12px;
-      margin-top: 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    button:hover {
-      background-color: #0369a1;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        padding: 15px;
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>Form Pemesanan Logistik</h2>
-
-    <form id="formLogistik">
-      <label>Nama:</label>
-      <input type="text" id="nama" required>
-
-      <label>No WA:</label>
-      <input type="number" id="wa" required>
-
-      <label>Alamat:</label>
-      <input type="text" id="alamat" required>
+      <label>Alamat Tujuan:</label>
+      <textarea id="alamat" rows="2" placeholder="Masukkan alamat lengkap"></textarea>
 
       <label>Cabang:</label>
       <select id="cabang">
-        <option value="">Pilih Cabang</option>
-        <option value="Surabaya">Surabaya</option>
-        <option value="Jember">Jember</option>
-        <option value="Malang">Malang</option>
+        <option value="">-- Pilih Cabang --</option>
+        <option>Surabaya</option>
+        <option>Malang</option>
+        <option>Gresik</option>
+        <option>Sidoarjo</option>
+        <option>Sampang</option>
+        <option>Bangkalan</option>
+        <option>Tuban</option>
+        <option>Bojonegoro</option>
+        <option>Madiun</option>
+        <option>Semarang</option>
       </select>
 
       <label>Divisi:</label>
       <select id="divisi">
-        <option value="">Pilih Divisi</option>
-        <option value="Markom">Markom</option>
-        <option value="HJ">HJ</option>
-        <option value="KEPQ">KEPQ</option>
+        <option value="">-- Pilih Divisi --</option>
+        <option>HJ</option>
+        <option>TK</option>
+        <option>SD</option>
+        <option>Sekolah di Masjid</option>
+        <option>SMP</option>
+        <option>SMA</option>
+        <option>NBS</option>
       </select>
 
-      <label>Pengiriman:</label>
+      <label>Metode Pengiriman:</label>
       <div class="radio-group">
-        <label><input type="radio" name="pengiriman" value="Ambil Sendiri"> Ambil Sendiri</label>
-        <label><input type="radio" name="pengiriman" value="Kirim ke Tujuan"> Kirim ke Tujuan</label>
+        <label><input type="radio" name="pengiriman" value="Ambil Sendiri" /> Ambil Sendiri</label>
+        <label><input type="radio" name="pengiriman" value="Kirim ke Tujuan" /> Kirim ke Tujuan</label>
       </div>
 
-      <button type="submit">Kirim</button>
-    </form>
-  </div>
+      <hr />
+      <h3>Daftar Barang</h3>
 
-  <script>
-    document.getElementById("formLogistik").addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert("Data berhasil dikirim!");
-      // nanti bisa dihubungkan ke Google Apps Script atau backend lain
-    });
-  </script>
-</body>
+      <div id="barang-container">
+        <div class="barang-row">
+          <select class="barang">
+            <option value="">-- Pilih Barang --</option>
+          </select>
+          <input type="number" class="jumlah" placeholder="Jumlah" />
+          <input type="text" class="keterangan" placeholder="Keterangan (opsional)" />
+          <button type="button" class="hapus">🗑</button>
+        </div>
+      </div>
+
+      <button id="tambah">+ Tambah Barang</button>
+      <button id="kirim">Kirim Pesanan</button>
+      <p id="status"></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
