@@ -30,7 +30,7 @@ async function kirimPesanan(event) {
   const alamat = document.getElementById('alamat').value.trim();
   const cabang = document.getElementById('cabang').value.trim();
   const divisi = document.getElementById('divisi').value.trim();
-  const pengiriman = document.getElementById('pengiriman').value.trim();
+  const pengiriman = document.querySelector('input[name="pengiriman"]:checked')?.value || '';
   const barang = document.getElementById('barang').value.trim();
   const jumlah = document.getElementById('jumlah').value.trim();
   const keterangan = document.getElementById('keterangan').value.trim();
