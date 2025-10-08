@@ -21,7 +21,7 @@ body {
 /* ===== HEADINGS ===== */
 h2, h3 {
   text-align: center;
-  color: #0A8759;
+  color: #008797;
   margin-bottom: 24px;
   letter-spacing: 0.5px;
 }
@@ -126,7 +126,7 @@ button {
 }
 
 #tambah {
-  background-color: #3AD190;
+  background-color: #008797;
   color: #fff;
   margin-right: 10px;
 }
@@ -137,7 +137,7 @@ button {
 }
 
 #kirim {
-  background-color: #0A8759;
+  background-color: #0a7480;
   color: #fff;
 }
 
