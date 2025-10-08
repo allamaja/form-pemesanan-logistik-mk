@@ -1,114 +1,89 @@
-/* ===== Global Style ===== */
+/* ===== GLOBAL ===== */
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #f4f6f8;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  background: #f7faf9;
   margin: 0;
-  padding: 20px;
-  color: #333;
+  padding: 40px 0;
+  color: #222;
 }
 
-/* ===== Container ===== */
+/* ===== CONTAINER ===== */
 .container {
-  max-width: 650px;
-  background: #fff;
-  padding: 30px 35px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  margin: 0 auto;
+  max-width: 640px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  margin: auto;
+  box-shadow: 0 8px 28px rgba(10, 135, 89, 0.08);
+  border: 1px solid #eef3f0;
 }
 
-/* ===== Heading ===== */
+/* ===== HEADINGS ===== */
 h2, h3 {
   text-align: center;
   color: #0A8759;
-  margin-bottom: 15px;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
 }
 
-/* ===== Label & Input ===== */
+/* ===== FORM ELEMENTS ===== */
 label {
   display: block;
-  margin-top: 15px;
   font-weight: 600;
+  margin-top: 18px;
   color: #333;
 }
 
 input, select, textarea {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  margin-top: 6px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.25s ease;
+  background-color: #fafafa;
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: #3AD190;
-  box-shadow: 0 0 4px rgba(58, 209, 144, 0.5);
+  border-color: #0A8759;
+  background: #ffffff;
+  box-shadow: 0 0 6px rgba(10, 135, 89, 0.2);
   outline: none;
 }
 
-/* ===== Radio Buttons ===== */
+/* ===== RADIO BUTTONS ===== */
 .radio-group {
   display: flex;
-  gap: 25px;
+  gap: 40px;
   margin-top: 10px;
+  justify-content: center;
 }
 
 .radio-group label {
   display: flex;
   align-items: center;
-  gap: 8px;
-  cursor: pointer;
+  gap: 10px;
+  font-weight: 500;
 }
 
 .radio-group input[type="radio"] {
   accent-color: #0A8759;
-  transform: scale(1.2);
-}
-
-/* ===== Tombol ===== */
-button {
-  background-color: #0A8759;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
-  margin-top: 20px;
-  font-weight: 600;
-  transition: background-color 0.2s, transform 0.2s;
 }
 
-button:hover {
-  background-color: #066d46;
-  transform: translateY(-1px);
+/* ===== HR LINE ===== */
+hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 25px 0;
 }
 
-/* Tombol kecil (hapus dan tambah) */
-.hapus {
-  background-color: #d9534f;
-  padding: 8px 12px;
-  font-size: 14px;
-}
-
-.hapus:hover {
-  background-color: #c9302c;
-}
-
-#tambah {
-  background-color: #3AD190;
-  margin-right: 10px;
-}
-
-#tambah:hover {
-  background-color: #2fb67b;
-}
-
-/* ===== Daftar Barang ===== */
+/* ===== DAFTAR BARANG ===== */
 .barang-row {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
   margin-top: 10px;
 }
@@ -118,10 +93,60 @@ button:hover {
   flex: 1;
 }
 
-/* ===== Status Pesan ===== */
+/* ===== BUTTONS ===== */
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 11px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+#tambah {
+  background-color: #3AD190;
+  color: #fff;
+  margin-right: 10px;
+}
+
+#tambah:hover {
+  background-color: #2fb67b;
+  transform: translateY(-2px);
+}
+
+#kirim {
+  background-color: #0A8759;
+  color: #fff;
+}
+
+#kirim:hover {
+  background-color: #076a47;
+  transform: translateY(-2px);
+}
+
+.hapus {
+  background-color: #ef4444;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.hapus:hover {
+  background-color: #dc2626;
+}
+
+/* ===== STATUS ===== */
 #status {
-  margin-top: 15px;
-  font-style: italic;
+  margin-top: 20px;
   text-align: center;
+  font-style: italic;
   color: #555;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .barang-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
