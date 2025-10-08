@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Pemesanan Logistik</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0284c7;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 4px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .radio-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #0284c7;
+      color: white;
+      border: none;
+      padding: 12px;
+      margin-top: 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0369a1;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Form Pemesanan Logistik</h2>
+
+    <form id="formLogistik">
+      <label>Nama:</label>
+      <input type="text" id="nama" required>
+
+      <label>No WA:</label>
+      <input type="number" id="wa" required>
+
+      <label>Alamat:</label>
+      <input type="text" id="alamat" required>
+
+      <label>Cabang:</label>
+      <select id="cabang">
+        <option value="">Pilih Cabang</option>
+        <option value="Surabaya">Surabaya</option>
+        <option value="Jember">Jember</option>
+        <option value="Malang">Malang</option>
+      </select>
+
+      <label>Divisi:</label>
+      <select id="divisi">
+        <option value="">Pilih Divisi</option>
+        <option value="Markom">Markom</option>
+        <option value="HJ">HJ</option>
+        <option value="KEPQ">KEPQ</option>
+      </select>
+
+      <label>Pengiriman:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="pengiriman" value="Ambil Sendiri"> Ambil Sendiri</label>
+        <label><input type="radio" name="pengiriman" value="Kirim ke Tujuan"> Kirim ke Tujuan</label>
+      </div>
+
+      <button type="submit">Kirim</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("formLogistik").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Data berhasil dikirim!");
+      // nanti bisa dihubungkan ke Google Apps Script atau backend lain
+    });
+  </script>
+</body>
+</html>
