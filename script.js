@@ -1,82 +1,73 @@
-// Simulasi ambil daftar barang (dummy)
-async function isiDropdownBarang() {
-  const list = ["Spidol", "Kertas A4", "Buku Catatan", "Pena"];
-  const selects = document.querySelectorAll(".barang");
-  selects.forEach((select) => {
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbztC4hZdlKKBoY9l5JKGxIvho1ca4FIMzaj0GTFIEs_IOosGOEOY9TYskysRQJZ1o8r/exec';
+
+// Ambil data barang dari backend
+async function loadBarangList() {
+  try {
+    const response = await fetch(`${SCRIPT_URL}?action=getBarangList`);
+    const barangList = await response.json();
+
+    const select = document.getElementById('barang');
     select.innerHTML = '<option value="">-- Pilih Barang --</option>';
-    list.forEach((item) => {
-      const option = document.createElement("option");
-      option.value = item;
-      option.textContent = item;
+
+    barangList.forEach(barang => {
+      const option = document.createElement('option');
+      option.value = barang;
+      option.textContent = barang;
       select.appendChild(option);
     });
-  });
+  } catch (err) {
+    console.error('Gagal memuat daftar barang:', err);
+    alert('⚠️ Gagal memuat daftar barang. Coba refresh halaman.');
+  }
 }
 
-isiDropdownBarang();
+// Kirim data pesanan ke backend
+async function kirimPesanan(event) {
+  event.preventDefault();
 
-// Tambah baris
-document.getElementById("tambah").addEventListener("click", () => {
-  const container = document.getElementById("barang-container");
-  const barisBaru = document.querySelector(".barang-row").cloneNode(true);
-  barisBaru.querySelector(".jumlah").value = "";
-  barisBaru.querySelector(".keterangan").value = "";
-  container.appendChild(barisBaru);
-  isiDropdownBarang();
-});
+  const namaPemesan = document.getElementById('namaPemesan').value.trim();
+  const noWa = document.getElementById('noWa').value.trim();
+  const alamat = document.getElementById('alamat').value.trim();
+  const cabang = document.getElementById('cabang').value.trim();
+  const divisi = document.getElementById('divisi').value.trim();
+  const pengiriman = document.getElementById('pengiriman').value.trim();
+  const barang = document.getElementById('barang').value.trim();
+  const jumlah = document.getElementById('jumlah').value.trim();
+  const keterangan = document.getElementById('keterangan').value.trim();
 
-// Hapus baris
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("hapus")) {
-    e.target.parentNode.remove();
-  }
-});
-
-// Kirim data (sementara hanya tampilkan di console)
-document.getElementById("kirim").addEventListener("click", async () => {
-  const namaPemesan = document.getElementById("namaPemesan").value.trim();
-  const noWa = document.getElementById("noWa").value.trim();
-  const alamat = document.getElementById("alamat").value.trim();
-  const cabang = document.getElementById("cabang").value.trim();
-  const divisi = document.getElementById("divisi").value.trim();
-  const pengiriman = document.querySelector('input[name="pengiriman"]:checked');
-
-  if (!namaPemesan || !noWa || !cabang || !divisi || !pengiriman) {
-    alert("⚠️ Mohon lengkapi semua data!");
+  if (!namaPemesan || !barang || !jumlah) {
+    alert('⚠️ Nama pemesan, barang, dan jumlah wajib diisi!');
     return;
   }
 
-  const rows = document.querySelectorAll(".barang-row");
-  const data = [];
+  const data = [{
+    namaPemesan,
+    noWa,
+    alamat,
+    cabang,
+    divisi,
+    pengiriman,
+    barang,
+    jumlah,
+    keterangan
+  }];
 
-  rows.forEach((r) => {
-    const barang = r.querySelector(".barang").value;
-    const jumlah = r.querySelector(".jumlah").value;
-    if (barang && jumlah) {
-      data.push({
-        namaPemesan,
-        noWa,
-        alamat,
-        cabang,
-        divisi,
-        pengiriman: pengiriman.value,
-        barang,
-        jumlah,
-        keterangan: r.querySelector(".keterangan").value,
-      });
-    }
-  });
+  try {
+    const response = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify(data)
+    });
 
-  if (data.length === 0) {
-    alert("Minimal pesan 1 barang!");
-    return;
+    alert('✅ Pesanan berhasil dikirim!');
+    document.getElementById('formPemesanan').reset();
+
+  } catch (err) {
+    console.error('Gagal mengirim pesanan:', err);
+    alert('⚠️ Terjadi kesalahan saat mengirim pesanan.');
   }
+}
 
-  document.getElementById("status").textContent = "⏳ Mengirim data...";
-  console.log(data); // sementara hanya log ke console
-
-  // Jika sudah punya backend/API:
-  // await fetch('https://api-kamu.com/simpan', {method: 'POST', body: JSON.stringify(data)})
-
-  document.getElementById("status").textContent = "✅ Data berhasil dikirim (simulasi)";
-});
+// Jalankan fungsi setelah halaman dimuat
+window.onload = loadBarangList;
+document.getElementById('formPemesanan').addEventListener('submit', kirimPesanan);
