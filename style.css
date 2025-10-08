@@ -92,6 +92,32 @@ hr {
 .barang-row input {
   flex: 1;
 }
+.barang-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap; /* agar bisa turun baris dengan rapi */
+}
+
+.barang-item select,
+.barang-item input {
+  flex: 1;
+  min-width: 100px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.barang-item button {
+  background-color: #EF4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
 
 /* ===== BUTTONS ===== */
 button {
@@ -165,6 +191,16 @@ button {
     display: flex;
     flex-direction: column;
     gap: 8px; /* jarak vertikal antar tombol */
+  }
+  .barang-item {
+    flex-direction: column; /* susun vertikal */
+    align-items: stretch;
+  }
+
+  .barang-item select,
+  .barang-item input,
+  .barang-item button {
+    width: 100%; /* biar lebar penuh */
   }
 
   button {
